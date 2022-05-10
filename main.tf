@@ -31,6 +31,11 @@ variable "workerdesiredsize" {
   description = "worker desired size"
 }
 
+variable "clustername" {
+  type        = string
+  description = "cluster name"
+}
+
 data "intersight_organization_organization" "organization_moid" {
   name = local.organization
 }
@@ -56,8 +61,8 @@ module "terraform-intersight-iks" {
   version = "2.2"
 
   cluster = {
-    name                = local.clustername
-    action              = "Deploy"
+    name                = var.clustername
+    action              = "Unassign"
     wait_for_completion = false
     worker_nodes        = var.workerdesiredsize
     load_balancers      = local.mgmtcfglbcnt
