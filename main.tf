@@ -62,7 +62,7 @@ module "terraform-intersight-iks" {
 
   cluster = {
     name                = var.clustername
-    action              = "Unassign"
+    action              = "Deploy"
     wait_for_completion = false
     worker_nodes        = var.workerdesiredsize
     load_balancers      = local.mgmtcfglbcnt
